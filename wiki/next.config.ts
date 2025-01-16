@@ -1,17 +1,10 @@
-import type { NextConfig } from "next";
-import withMDX from "@next/mdx";
-
-const nextConfig: NextConfig = withMDX({
-  extension: /\.mdx?$/,
-  options: {
-    providerImportSource: "@mdx-js/react",
-  },
-})({
-  reactStrictMode: true,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  experimental: {
-    appDir: true,
-  },
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/
 });
 
-export default nextConfig;
+/** @type {import('next').NextConfig} */
+const nextConfig = withMDX({
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
+});
+
+module.exports = nextConfig;
