@@ -94,28 +94,27 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-8 mb-14 w-full sm:w-[30%] md:w-[25%] h-[50px] flex items-center bg-[#12141d] rounded-md shadow-md px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={2}
-          stroke="currentColor"
-          className="w-5 h-5 text-gray-500"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+        <div className="mt-8 mb-14 w-[30%] sm:w-[25%] h-[50px] flex items-center bg-[#12141d] rounded-md shadow-md px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-5 h-5 text-gray-500"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
+            />
+          </svg>
+          <input
+            type="text"
+            placeholder="Пошук інформації на сайті..."
+            className="ml-3 flex-grow bg-transparent text-lg text-gray-300 placeholder-gray-500 focus:outline-none"
           />
-        </svg>
-        <input
-          type="text"
-          placeholder="Пошук інформації на сайті..."
-          className="w-full bg-transparent text-lg sm:text-xl text-gray-300 placeholder-gray-500 focus:outline-none"
-        />
-      </div>
-
+        </div>
         <div className="w-full max-w-5xl px-4">
           <h2 className="text-2xl font-semibold text-gray-300 mb-6">Список категорій:</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
