@@ -3,11 +3,22 @@
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { FC } from 'react';
-import { FaDollarSign, FaSearch, FaDumbbell, FaCar, FaUsers, FaTimes, FaTachometerAlt } from 'react-icons/fa';  // Import FaTachometerAlt
+import { FaDollarSign, FaSearch, FaDumbbell, FaCar, FaUsers, FaTimes, FaTachometerAlt } from 'react-icons/fa';
 import Footer from "../component/footer";
 import Header from "../component/header";
 import { MDXProvider } from '@mdx-js/react';
 import { motion } from 'framer-motion'; 
+
+interface Property {
+  title: string;
+  image: string;
+  price: string | number;
+  capacity?: string | number;
+  garage?: string;
+  tenants?: string;
+  type: string;
+  speed?: string; 
+}
 
 interface CardProps {
   image: string;
@@ -16,11 +27,11 @@ interface CardProps {
   capacity?: string | number;
   garage?: string;
   tenants?: string;
-  type: string;
-  speed: string; 
+  type: string;  
+  speed?: string;
 }
 
-const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants, speed }) => {
+const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants, type, speed }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleImageClick = () => setModalOpen(true);
@@ -113,15 +124,15 @@ const MDXContent = dynamic(() => import('../content/transport.mdx'));
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [propertyType, setPropertyType] = useState<string>('all');
-  const [properties, setProperties] = useState<any[]>([]);
-  const [filteredProperties, setFilteredProperties] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const content = (await import('../content/transport.mdx')).properties; 
-        setProperties(content);
+        const content = (await import('../content/transport.mdx')).properties;
+        setProperties(content); 
       } catch (error) {
         console.error('Error loading MDX data:', error);
       } finally {
@@ -145,7 +156,7 @@ export default function Home() {
       filtered = filtered.filter((property) => property.type === propertyType);
     }
 
-    setFilteredProperties(filtered); 
+    setFilteredProperties(filtered);
   }, [searchQuery, propertyType, properties]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -219,7 +230,7 @@ export default function Home() {
             <div className="col-span-full text-center text-xl text-gray-400">Нічого не знайдено</div>
           ) : (
             <MDXProvider components={{ Card }}>
-              {filteredProperties.map((property: any) => (
+              {filteredProperties.map((property: Property) => (
                 <Card
                   key={property.title}
                   image={property.image}
@@ -228,8 +239,8 @@ export default function Home() {
                   capacity={property.capacity}
                   garage={property.garage}
                   tenants={property.tenants}
-                  type={property.type}
-                  speed={property.speed} 
+                  type={property.type}  
+                  speed={property.speed}
                 />
               ))}
             </MDXProvider>

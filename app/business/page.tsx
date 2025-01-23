@@ -8,16 +8,19 @@ import Footer from "../component/footer";
 import Header from "../component/header";
 import { MDXProvider } from '@mdx-js/react';
 import { motion } from 'framer-motion'; 
+import Image from 'next/image';
 
-interface CardProps {
-  image: string;
+interface Property {
   title: string;
+  image: string;
   price: string | number;
   capacity?: string | number;
   garage?: string;
   tenants?: string;
   type: string;
 }
+
+interface CardProps extends Property {}
 
 const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants }) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -33,9 +36,11 @@ const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants })
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }} 
     >
-      <img
+      <Image
         src={image}
         alt={title}
+        width={320}
+        height={220}
         className="rounded-md w-full h-[220px] object-cover cursor-pointer"
         onClick={handleImageClick}
       />
@@ -74,9 +79,11 @@ const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants })
             >
               ✕
             </button>
-            <img
+            <Image
               src={image}
               alt={title}
+              width={800}
+              height={600}
               className="max-w-full max-h-full object-contain"
             />
           </div>
@@ -106,8 +113,8 @@ const MDXContent = dynamic(() => import('../content/business.mdx'));
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [propertyType, setPropertyType] = useState<string>('all');
-  const [properties, setProperties] = useState<any[]>([]);
-  const [filteredProperties, setFilteredProperties] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -188,19 +195,16 @@ export default function Home() {
               onChange={handleTypeChange}
               className="w-full p-3 rounded-md bg-[#0c0e14] text-lg text-gray-300 focus:outline-none focus:ring-0"
             >
-            <option value="all">Всі</option>
-            <option value="shop">магазин 24/7</option>
-            <option value="gasstation">заправка</option>
-            <option value="atm">банкомат</option>
-            <option value="gunstore">оружейний магазин</option>
-            <option value="clothingstore">магазин одягу</option>
-            <option value="carshowroom">автосалон</option>
-            <option value="tattooparlor">тату-салон</option>
-            <option value="barbershop">барбершоп</option>
-            <option value="carwash">автомийка</option>
-
-
-
+              <option value="all">Всі</option>
+              <option value="shop">магазин 24/7</option>
+              <option value="gasstation">заправка</option>
+              <option value="atm">банкомат</option>
+              <option value="gunstore">оружейний магазин</option>
+              <option value="clothingstore">магазин одягу</option>
+              <option value="carshowroom">автосалон</option>
+              <option value="tattooparlor">тату-салон</option>
+              <option value="barbershop">барбершоп</option>
+              <option value="carwash">автомийка</option>
             </select>
           </div>
         </motion.div>
@@ -218,7 +222,7 @@ export default function Home() {
             <div className="col-span-full text-center text-xl text-gray-400">Нічого не знайдено</div>
           ) : (
             <MDXProvider components={{ Card }}>
-              {filteredProperties.map((property: any) => (
+              {filteredProperties.map((property) => (
                 <Card
                   key={property.title}
                   image={property.image}

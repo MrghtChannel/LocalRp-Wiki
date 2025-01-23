@@ -1,22 +1,22 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link'; 
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const router = useRouter();
 
   const preventScroll = (e: WheelEvent) => {
     e.preventDefault();
   };
+
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'; 
-      window.addEventListener('wheel', preventScroll, { passive: false } as EventListenerOptions);
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('wheel', preventScroll, { passive: false });
     } else {
-      document.body.style.overflow = 'auto'; 
+      document.body.style.overflow = 'auto';
       window.removeEventListener('wheel', preventScroll);
     }
 
@@ -26,32 +26,25 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
-  const handleCategoryClick = (link: string | undefined) => {
-    if (link) {
-      router.push(link);
-    } else {
-      console.error('Link is undefined!');
-    }
-  };
-
   return (
     <div className="relative text-white">
       <div className="absolute top-4 right-4 z-50">
         <button
-          className="text-white text-4xl" 
+          className="text-white text-4xl"
           onClick={() => setMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? '✕' : '☰'} 
+          {isMenuOpen ? '✕' : '☰'}
         </button>
       </div>
-
       {isMenuOpen && (
         <div className="fixed inset-0 bg-[#0c0e14] bg-opacity-90 flex items-center justify-center z-40">
           <div className="text-center space-y-4">
             <div className="flex flex-col space-y-4">
-              <a href="/" className="text-2xl font-semibold text-white hover:text-blue-500">
-                Головна
-              </a>
+              <Link href="/" passHref>
+                <span className="text-2xl font-semibold text-white hover:text-blue-500">
+                  Головна
+                </span>
+              </Link>
               <a href="http://localrp.com.ua/donate" className="text-2xl font-semibold text-white hover:text-blue-500">
                 Донат
               </a>
@@ -66,16 +59,23 @@ const Header = () => {
         </div>
       )}
 
-      <header className="w-full flex justify-center items-center px-[4cm] py-4 bg-transparent sm:flex-row flex-col">
-        <div className="flex items-center">
+      <header className="w-full flex flex-col sm:flex-row justify-between items-center px-4 py-4 bg-transparent">
+        <div className="flex items-center mb-4 sm:mb-0">
           <Link href="/" passHref>
-            <img src="/logo.png" alt="LocalRP Logo" className="h-16 cursor-pointer" />
+            <Image
+              src="/logo.png"
+              alt="LocalRP Logo"
+              width={128}
+              height={128}
+              className="h-12 sm:h-16 cursor-pointer"
+            />
           </Link>
-          <span className="bg-blue-600 text-white px-4 py-2 rounded-md text-lg align-middle font-semibold">
+          <span className="bg-blue-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-sm sm:text-lg font-semibold ml-2">
             WIKI
           </span>
         </div>
-        <div className="w-full sm:w-[40%] h-[50px] flex items-center bg-[#12141d] rounded-md shadow-md px-4 py-1.5 focus-within:ring-2 focus-within:ring-blue-500 mx-auto mt-4 sm:mt-0">
+
+        <div className="w-full sm:w-[30%] md:w-[40%] h-12 sm:h-[50px] flex items-center justify-center bg-[#12141d] rounded-md shadow-md px-4 focus-within:ring-2 focus-within:ring-blue-500 mx-auto">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -93,7 +93,7 @@ const Header = () => {
           <input
             type="text"
             placeholder="Пошук інформації на сайті..."
-            className="ml-3 flex-grow bg-transparent text-lg text-gray-300 placeholder-gray-500 focus:outline-none"
+            className="ml-3 flex-grow bg-transparent text-sm sm:text-lg text-gray-300 placeholder-gray-500 focus:outline-none"
           />
         </div>
       </header>

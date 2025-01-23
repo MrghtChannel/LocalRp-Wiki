@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const TILE_SIZE = 256;
 const TILE_GRID = [
   ['minimap_sea_0_0.png', 'minimap_sea_0_1.png'],
   ['minimap_sea_1_0.png', 'minimap_sea_1_1.png'],
-  ['minimap_sea_2_0.png', 'minimap_sea_2_1.png']
+  ['minimap_sea_2_0.png', 'minimap_sea_2_1.png'],
 ];
 
 const Map: React.FC = () => {
@@ -40,14 +42,14 @@ const Map: React.FC = () => {
     setDragStart({ x: event.clientX, y: event.clientY });
   };
 
-  const handleMouseMove = (event: MouseEvent) => {
+  const handleMouseMove = useCallback((event: MouseEvent) => {
     if (!isDragging) return;
     const deltaX = event.clientX - dragStart.x;
     const deltaY = event.clientY - dragStart.y;
     setOffsetX((prevOffsetX) => prevOffsetX + deltaX);
     setOffsetY((prevOffsetY) => prevOffsetY + deltaY);
     setDragStart({ x: event.clientX, y: event.clientY });
-  };
+  }, [isDragging, dragStart]);
 
   const handleMouseUp = () => {
     setIsDragging(false);
@@ -71,13 +73,13 @@ const Map: React.FC = () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging, dragStart]);
+  }, [isDragging, dragStart, handleMouseMove]);
 
   return (
     <div className="min-h-screen bg-[#0c0e14] relative text-white">
       <div className="absolute top-4 right-4 z-50">
         <button
-          className="text-white text-4xl" 
+          className="text-white text-4xl"
           onClick={() => setMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? '✕' : '☰'}
@@ -86,14 +88,12 @@ const Map: React.FC = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 bg-[#0c0e14] bg-opacity-90 flex items-center justify-center z-40">
           <div className="text-center space-y-4">
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="absolute top-4 right-4 text-2xl text-gray-400 hover:text-white">
-            </button>
             <div className="flex flex-col space-y-4">
-              <a href="/" className="text-2xl font-semibold text-white hover:text-blue-500">
-                Головна
-              </a>
+              <Link href="/" passHref>
+                <span className="text-2xl font-semibold text-white hover:text-blue-500">
+                  Головна
+                </span>
+              </Link>
               <a href="http://localrp.com.ua/donate" className="text-2xl font-semibold text-white hover:text-blue-500">
                 Донат
               </a>
@@ -143,14 +143,14 @@ const Map: React.FC = () => {
           >
             {TILE_GRID.map((row, rowIndex) =>
               row.map((tile, colIndex) => (
-                <img
+                <Image
                   key={`${rowIndex}-${colIndex}`}
                   src={`/maps/${tile}`}
                   alt={`tile-${rowIndex}-${colIndex}`}
+                  width={TILE_SIZE}
+                  height={TILE_SIZE}
                   draggable={false}
                   style={{
-                    width: TILE_SIZE,
-                    height: TILE_SIZE,
                     objectFit: 'cover',
                     userSelect: 'none',
                   }}

@@ -1,7 +1,9 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import Footer from "./component/footer";
 
 export default function Home() {
@@ -64,9 +66,9 @@ export default function Home() {
               className="absolute top-4 right-4 text-2xl text-gray-400 hover:text-white">
             </button>
             <div className="flex flex-col space-y-4">
-              <a href="/" className="text-2xl font-semibold text-white hover:text-blue-500">
+              <Link href="/" className="text-2xl font-semibold text-white hover:text-blue-500">
                 Головна
-              </a>
+              </Link>
               <a href="http://localrp.com.ua/donate" className="text-2xl font-semibold text-white hover:text-blue-500">
                 Донат
               </a>
@@ -84,7 +86,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center">
         <div className="text-center mt-52">
           <h1 className="text-2xl sm:text-3xl font-bold uppercase">
-            <img src="/logo.png" alt="LocalRP Logo" className="inline-block h-16" />
+            <Image src="/logo.png" alt="LocalRP Logo" className="inline-block h-16" width={128} height={128} />
             <span className="bg-blue-600 text-white px-4 py-2 rounded-md text-lg align-middle font-semibold">
               WIKI
             </span>
@@ -94,7 +96,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-8 mb-14 w-[30%] sm:w-[25%] h-[50px] flex items-center bg-[#12141d] rounded-md shadow-md px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500">
+        <div className="mt-8 mb-14 w-full sm:w-[80%] md:w-[60%] lg:w-[30%] h-[50px] flex items-center bg-[#12141d] rounded-md shadow-md px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

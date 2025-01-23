@@ -7,9 +7,9 @@ import { FaDollarSign, FaSearch, FaDumbbell, FaCar, FaUsers, FaTimes } from 'rea
 import Footer from "../component/footer";
 import Header from "../component/header";
 import { MDXProvider } from '@mdx-js/react';
-import { motion } from 'framer-motion'; 
+import { motion } from 'framer-motion';
 
-interface CardProps {
+interface Property {
   image: string;
   title: string;
   price: string | number;
@@ -18,6 +18,8 @@ interface CardProps {
   tenants?: string;
   type: string;
 }
+
+interface CardProps extends Property {}
 
 const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants }) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -31,7 +33,7 @@ const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants })
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }} 
+      transition={{ duration: 0.3 }}
     >
       <img
         src={image}
@@ -106,14 +108,14 @@ const MDXContent = dynamic(() => import('../content/realty.mdx'));
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [propertyType, setPropertyType] = useState<string>('all');
-  const [properties, setProperties] = useState<any[]>([]);
-  const [filteredProperties, setFilteredProperties] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const content = (await import('../content/realty.mdx')).properties; 
+        const content = (await import('../content/realty.mdx')).properties;
         setProperties(content);
       } catch (error) {
         console.error('Error loading MDX data:', error);
@@ -138,7 +140,7 @@ export default function Home() {
       filtered = filtered.filter((property) => property.type === propertyType);
     }
 
-    setFilteredProperties(filtered); 
+    setFilteredProperties(filtered);
   }, [searchQuery, propertyType, properties]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -202,7 +204,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }} 
+          transition={{ duration: 0.5 }}
         >
           {loading ? (
             Array.from({ length: 6 }).map((_, index) => <SkeletonCard key={index} />)
@@ -210,7 +212,7 @@ export default function Home() {
             <div className="col-span-full text-center text-xl text-gray-400">Нічого не знайдено</div>
           ) : (
             <MDXProvider components={{ Card }}>
-              {filteredProperties.map((property: any) => (
+              {filteredProperties.map((property) => (
                 <Card
                   key={property.title}
                   image={property.image}

@@ -3,18 +3,21 @@
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { FC } from 'react';
-import { FaDollarSign, FaSearch, FaDumbbell, FaCar, FaUsers, FaTimes } from 'react-icons/fa';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 import Footer from "../component/footer";
 import Header from "../component/header";
 import { MDXProvider } from '@mdx-js/react';
 import { motion } from 'framer-motion'; 
 
-interface CardProps {
+interface Property {
   image: string;
   title: string;
+  type?: string; 
 }
 
-const Card: FC<CardProps> = ({ image, title}) => {
+interface CardProps extends Property {}
+
+const Card: FC<CardProps> = ({ image, title }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleImageClick = () => setModalOpen(true);
@@ -80,8 +83,8 @@ const MDXContent = dynamic(() => import('../content/items.mdx'));
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [propertyType, setPropertyType] = useState<string>('all');
-  const [properties, setProperties] = useState<any[]>([]);
-  const [filteredProperties, setFilteredProperties] = useState<any[]>([]);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -180,7 +183,7 @@ export default function Home() {
             <div className="col-span-full text-center text-xl text-gray-400">Нічого не знайдено</div>
           ) : (
             <MDXProvider components={{ Card }}>
-              {filteredProperties.map((property: any) => (
+              {filteredProperties.map((property) => (
                 <Card
                   key={property.title}
                   image={property.image}
