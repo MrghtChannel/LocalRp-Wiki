@@ -194,7 +194,7 @@ export default function Home() {
           )}
         </motion.div>
       </main>
-      <Footer />
+      <Footer className="mt-auto" />
     </div>
   );
 }

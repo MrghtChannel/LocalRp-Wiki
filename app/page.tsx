@@ -5,28 +5,11 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "./component/footer";
+import { Menu } from "../config-menu";
 
 export default function Home() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
-
-  const categories = [
-    { title: 'Мапа', description: 'Мапа сервера з усіма локаціями', icon: 'map', link: '/map' },
-    { title: 'Транспорт', description: 'Увесь доступний транспорт на сервері', icon: 'car', link: '/transport' },
-    { title: 'Нерухомість', description: 'Дані про всі будинки та квартири', icon: 'home', link: '/realty' },
-    { title: 'Бізнеси', description: 'Просунутий варіант заробітку', icon: 'business', link: '/business' },
-    { title: 'Предмети', description: 'Доступні предмети на сервері', icon: 'box', link: '/items' },
-    { title: 'Основи гри', description: 'Вивчення базових механік гри', icon: 'book', link: '/post' },
-    { title: 'Роботи', description: 'Деталі по доступним роботам', icon: 'briefcase', link: '/post?category=State&subcategory=obshaya-informaciya' },
-    { title: 'Гос', description: 'Інформація про державні структури', icon: 'government', link: '/post?category=State&subcategory=obshaya-informaciya' },
-    { title: 'Крайм', description: 'Світ злочинності та його правила', icon: 'crime', link: '/post?category=сrime&subcategory=Bank+robbery' },
-    { title: 'Система сімей', description: 'Можливості створення сімей', icon: 'family', link: '/post?category=family+system&subcategory=creating-an-organization' },
-    { title: 'Сезонний пропуск', description: 'Прогресія та нагороди', icon: 'pass', link: '/post?category=Season+Pass&subcategory=2025' },
-    { title: 'Як почати грати', description: 'Поради для новачків', icon: 'play', link: 'http://localrp.com.ua' },
-    { title: 'Помилка FiveM', description: 'Як виправити помилки', icon: 'error', link: '/post' },
-    { title: 'Основи Roleplay', description: 'Етика і рольова гра', icon: 'roleplay', link: '/post' },
-    { title: 'Програмне забезпечення', description: 'Рекомендації для клієнтів', icon: 'software', link: '/post' },
-  ];
 
   const handleCategoryClick = (link: string | undefined) => {
     if (link) {
@@ -86,10 +69,14 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center">
         <div className="text-center mt-52">
           <h1 className="text-2xl sm:text-3xl font-bold uppercase">
-            <Image src="/logo.png" alt="LocalRP Logo" className="inline-block h-16" width={128} height={128} />
-            <span className="bg-blue-600 text-white px-4 py-2 rounded-md text-lg align-middle font-semibold">
-              WIKI
-            </span>
+          <Image 
+            src="/logo.png" 
+            alt="LocalRP Logo" 
+            className="inline-block h-auto max-h-32 w-32 rounded-full" 
+            width={250} 
+            height={250} 
+            loading="lazy" 
+          />
           </h1>
           <p className="mt-4 text-gray-400 text-base sm:text-lg">
             Платформа, де ви знайдете всю детальну інформацію про найнеобхідніше в нашій грі.
@@ -120,7 +107,7 @@ export default function Home() {
         <div className="w-full max-w-5xl px-4">
           <h2 className="text-2xl font-semibold text-gray-300 mb-6">Список категорій:</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category, index) => (
+            {Menu.map((category, index) => (
               <div
                 key={index}
                 className="bg-[#12141d] p-6 rounded-md shadow-md hover:bg-[#1a1c24] transition-colors cursor-pointer flex items-center justify-between"

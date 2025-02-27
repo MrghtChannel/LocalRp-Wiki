@@ -7,8 +7,7 @@ import { FaDollarSign, FaSearch, FaDumbbell, FaCar, FaUsers, FaTimes } from 'rea
 import Footer from "../component/footer";
 import Header from "../component/header";
 import { MDXProvider } from '@mdx-js/react';
-import { motion } from 'framer-motion'; 
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface Property {
   title: string;
@@ -34,13 +33,11 @@ const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants })
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }} 
+      transition={{ duration: 0.3 }}
     >
-      <Image
+      <img
         src={image}
         alt={title}
-        width={320}
-        height={220}
         className="rounded-md w-full h-[220px] object-cover cursor-pointer"
         onClick={handleImageClick}
       />
@@ -79,11 +76,9 @@ const Card: FC<CardProps> = ({ image, title, price, capacity, garage, tenants })
             >
               ✕
             </button>
-            <Image
+            <img
               src={image}
               alt={title}
-              width={800}
-              height={600}
               className="max-w-full max-h-full object-contain"
             />
           </div>
@@ -120,7 +115,7 @@ export default function Home() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const content = (await import('../content/business.mdx')).properties; 
+        const content = (await import('../content/business.mdx')).properties;
         setProperties(content);
       } catch (error) {
         console.error('Error loading MDX data:', error);
@@ -145,7 +140,7 @@ export default function Home() {
       filtered = filtered.filter((property) => property.type === propertyType);
     }
 
-    setFilteredProperties(filtered); 
+    setFilteredProperties(filtered);
   }, [searchQuery, propertyType, properties]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -164,7 +159,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#0c0e14] relative text-white">
       <Header />
       <main className="flex flex-col items-center py-10 px-4">
-        <h1 className="text-3xl font-bold mb-6">Таблиця бізнесів</h1>
+        <h1 className="text-3xl font-bold mb-6">Таблиця Бізнесів</h1>
 
         <motion.div
           className="flex flex-col md:flex-row gap-4 mb-6 w-full justify-center"
@@ -214,7 +209,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }} 
+          transition={{ duration: 0.5 }}
         >
           {loading ? (
             Array.from({ length: 6 }).map((_, index) => <SkeletonCard key={index} />)
@@ -238,7 +233,7 @@ export default function Home() {
           )}
         </motion.div>
       </main>
-      <Footer />
+      <Footer className="mt-auto" />
     </div>
   );
 }
