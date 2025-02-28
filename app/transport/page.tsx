@@ -158,6 +158,11 @@ export default function Home() {
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+
+    const params = new URLSearchParams(window.location.search);
+    params.set('search', e.target.value);
+    params.set('type', propertyType);
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

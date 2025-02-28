@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { useState, useEffect } from 'react';
 import { FC } from 'react';
@@ -6,12 +6,12 @@ import { FaSearch, FaTimes } from 'react-icons/fa';
 import Footer from "../component/footer";
 import Header from "../component/header";
 import { MDXProvider } from '@mdx-js/react';
-import { motion } from 'framer-motion'; 
+import { motion } from 'framer-motion';
 
 interface Property {
   image: string;
   title: string;
-  type?: string; 
+  type?: string;
 }
 
 interface CardProps extends Property {
@@ -30,7 +30,7 @@ const Card: FC<CardProps> = ({ image, title }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }} 
+      transition={{ duration: 0.3 }}
     >
       <img
         src={image}
@@ -39,7 +39,7 @@ const Card: FC<CardProps> = ({ image, title }) => {
         onClick={handleImageClick}
       />
       <h2 className="text-2xl font-bold mt-4">{title}</h2>
-      
+
       {isModalOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50"
@@ -89,7 +89,7 @@ export default function Home() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const content = (await import('../content/items.mdx')).properties; 
+        const content = (await import('../content/items.mdx')).properties;
         setProperties(content);
       } catch (error) {
         console.error('Error loading MDX data:', error);
@@ -102,6 +102,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    if (searchQuery) {
+      queryParams.set('search', searchQuery);
+    } else {
+      queryParams.delete('search');
+    }
+    window.history.pushState({}, '', '?' + queryParams.toString());
     let filtered = properties;
 
     if (searchQuery) {
@@ -114,11 +121,24 @@ export default function Home() {
       filtered = filtered.filter((property) => property.type === propertyType);
     }
 
-    setFilteredProperties(filtered); 
+    setFilteredProperties(filtered);
   }, [searchQuery, propertyType, properties]);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const urlSearchQuery = queryParams.get('search');
+    if (urlSearchQuery) {
+      setSearchQuery(urlSearchQuery);
+    }
+  }, []);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+
+    const params = new URLSearchParams(window.location.search);
+    params.set('search', e.target.value);
+    params.set('type', propertyType);
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
 
   const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -174,7 +194,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }} 
+          transition={{ duration: 0.5 }}
         >
           {loading ? (
             Array.from({ length: 6 }).map((_, index) => <SkeletonCard key={index} />)

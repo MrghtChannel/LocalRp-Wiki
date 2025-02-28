@@ -17,6 +17,7 @@
     "github-markdown-css": "^5.8.1",
     "gray-matter": "^4.0.3",
     "leaflet": "^1.9.4",
+    "lunr": "^2.3.9",
     "next": "^15.1.6",
     "next-mdx-remote": "^5.0.0",
     "react": "^19.0.0",
@@ -40,6 +41,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/leaflet": "^1.9.15",
+    "@types/lunr": "^2.3.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

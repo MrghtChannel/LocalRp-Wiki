@@ -47,7 +47,7 @@ const Header = () => {
       setIsSearching(false);
     }
   };
-
+  
   return (
     <div className="relative text-white">
       <div className="absolute top-4 right-4 z-50">
