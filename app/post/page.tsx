@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Header from "../component/header";
 import Footer from "../component/footer";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -17,6 +17,24 @@ const DocsPage: React.FC = () => {
   const [DocComponent, setDocComponent] = useState<React.FC | null>(null);
   const [docHeadings, setDocHeadings] = useState<Array<{ text: string; id: string }>>([]);
 
+  const loadDoc = useCallback(async (category: string, doc: string) => {
+    try {
+      const docModule = await import(`../content/wiki/${category}/${doc}.mdx`);
+      setDocComponent(() => docModule.default);
+      setSelectedDoc(`wiki/${category}/${doc}`);
+      setDocTitle(docModule.title || docTitles[`${category}/${doc}`] || "Без назви");
+      extractHeadings(docModule.default);
+    } catch (_error) {
+      console.error("Error fetching document:", _error);
+      const NoDocFound: React.FC = () => (
+        <p className="text-red-500 text-2xl font-bold ml-4">Документ не знайдено</p>
+      );
+      NoDocFound.displayName = "NoDocFound";
+      setDocComponent(() => NoDocFound);
+      setDocTitle(null);
+    }
+  }, []);
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const category = params.get("category");
@@ -26,24 +44,14 @@ const DocsPage: React.FC = () => {
       loadDoc(category, doc);
       setOpenSections((prev) => ({ ...prev, [category]: true }));
     }
-  }, []);
-
-  const loadDoc = async (category: string, doc: string) => {
-    try {
-      const module = await import(`../content/wiki/${category}/${doc}.mdx`);
-      setDocComponent(() => module.default);
-      setSelectedDoc(`wiki/${category}/${doc}`);
-      setDocTitle(module.title || docTitles[`${category}/${doc}`] || "Без назви");
-      extractHeadings(module.default);
-    } catch (error) {
-      setDocComponent(() => () => <p className="text-red-500 text-2xl font-bold ml-4">Документ не знайдено</p>);
-      setDocTitle(null);
-    }
-  };
+  }, [loadDoc]);
 
   const extractHeadings = (DocComponent: React.FC) => {
+    console.log(DocComponent);
     setTimeout(() => {
-      const headings = Array.from(document.querySelectorAll(".markdown-body h1, .markdown-body h2, .markdown-body h3"))
+      const headings = Array.from(
+        document.querySelectorAll(".markdown-body h1, .markdown-body h2, .markdown-body h3")
+      )
         .map((el) => ({ text: el.textContent || "", id: el.id }))
         .filter((item) => item.text && item.id);
       setDocHeadings(headings);

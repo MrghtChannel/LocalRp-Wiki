@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import { FC } from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 import Footer from "../component/footer";
@@ -15,7 +14,9 @@ interface Property {
   type?: string; 
 }
 
-interface CardProps extends Property {}
+interface CardProps extends Property {
+  isFeatured?: boolean;
+}
 
 const Card: FC<CardProps> = ({ image, title }) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -77,8 +78,6 @@ const SkeletonCard: FC = () => (
     <div className="h-4 bg-gray-700 mt-2 animate-pulse"></div>
   </motion.div>
 );
-
-const MDXContent = dynamic(() => import('../content/items.mdx'));
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>('');

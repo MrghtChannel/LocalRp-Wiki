@@ -15,10 +15,12 @@ export async function GET(req: Request) {
     const results = searchPages(pagesDir, query.toLowerCase());
 
     return NextResponse.json({ results });
-  } catch (error) {
+  }
+  catch (error) {
+    console.error("Search API Error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
-}
+}  
 
 function searchPages(dir: string, query: string, foundPages: string[] = []) {
   const files = fs.readdirSync(dir);
