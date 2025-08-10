@@ -1,158 +1,138 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
-import Footer from "./component/footer";
-import { Menu } from "../config-menu";
+import Link from "next/link";
+
+type MenuItem = {
+  title: string;
+  description: string;
+  icon?: string;
+  link?: string;
+};
+
+const Menu: MenuItem[] = [
+  { title: "Транспорт", description: "Весь доступний транспорт на сервері", icon: "car", link: "/transport" },
+  { title: "Нерухомість", description: "Дані по всіх домах і квартирах", icon: "home", link: "/realty" },
+  { title: "Бізнеси", description: "Просунутий варіант заробітку", icon: "business", link: "/business" },
+  { title: "Предмети", description: "Доступні предмети на сервері", icon: "box", link: "/items" },
+  { title: "Основи гри", description: "Вивчення базових механік гри", icon: "book", link: "#" },
+  { title: "Роботи", description: "Деталі по доступним роботам", icon: "briefcase", link: "#" },
+  { title: "Держава", description: "Інформація про державні структури", icon: "government", link: "#" },
+  { title: "Крайм", description: "Світ злочинності та його правила", icon: "crime", link: "#" },
+  { title: "Система сім'ї", description: "Можливості створення сімей", icon: "family", link: "#" },
+  { title: "Сезонний пропуск", description: "Прогресія та нагороди", icon: "pass", link: "#" },
+  { title: "Як почати грати", description: "Поради для новачків", icon: "play", link: "/docs/ragemp/how-to-download-and-start-the-game" },
+  { title: "Помилки RageMP", description: "Як виправити помилки", icon: "error", link: "/docs/ragemp/error" },
+  { title: "Основи Roleplay", description: "Етика та рольова гра", icon: "roleplay", link: "/docs/Cob0-of-gris/basics-of-roleplay" },
+  { title: "Програмне забезпечення", description: "Рекомендації для клієнтів", icon: "software", link: "/docs/Cob0-of-gris/software-security" },
+  { title: "Блог та новини", description: "Читайте останні оновлення, поради та новини", icon: "blog", link: "/blog" },
+];
+
+function renderIcon(name?: string) {
+  switch (name) {
+    case "map": return "🗺";
+    case "car": return "🚗";
+    case "home": return "🏡";
+    case "business": return "💰";
+    case "box": return "📦";
+    case "book": return "📚";
+    case "briefcase": return "💼";
+    case "government": return "🏛";
+    case "crime": return "👹";
+    case "family": return "👪";
+    case "pass": return "🏆";
+    case "play": return "▶";
+    case "error": return "⚠";
+    case "roleplay": return "👩‍👨‍👦";
+    case "software": return "🖥";
+    case "blog": return "📰";
+    default: return "📁";
+  }
+}
 
 export default function Home() {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-  const router = useRouter();
-
-  const handleCategoryClick = (link: string | undefined) => {
-    if (link) {
-      router.push(link);
-    } else {
-      console.error('Link is undefined!');
-    }
-  };
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'; 
-    } else {
-      document.body.style.overflow = 'auto'; 
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto'; 
-    };
-  }, [isMenuOpen]);
-
   return (
-    <div className="min-h-screen bg-[#0c0e14] relative text-white">
-      <div className="absolute top-4 right-4 z-50">
-        <button
-          className="text-white text-4xl" 
-          onClick={() => setMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? '✕' : '☰'}
-        </button>
+    <div className="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-8 sm:mt-10 lg:mt-12 mb-16 sm:mb-20 mx-auto">
+      <div className="flex justify-center mb-6 sm:mb-8">
+        <Image
+          src="/logo.png"
+          alt="LocalRP Logo"
+          className="inline-block h-auto max-h-28 sm:max-h-32 lg:max-h-36 w-28 sm:w-32 lg:w-36 rounded-full"
+          width={250}
+          height={250}
+          loading="lazy"
+        />
       </div>
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-[#0c0e14] bg-opacity-90 flex items-center justify-center z-40">
-          <div className="text-center space-y-4">
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="absolute top-4 right-4 text-2xl text-gray-400 hover:text-white">
-            </button>
-            <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-2xl font-semibold text-white hover:text-blue-500">
-                Головна
-              </Link>
-              <a href="http://localrp.com.ua/donate" className="text-2xl font-semibold text-white hover:text-blue-500">
-                Донат
-              </a>
-              <a href="http://forum.localrp.com.ua/forum" className="text-2xl font-semibold text-white hover:text-blue-500">
-                Форум
-              </a>
-              <a href="http://wiki.localrp.com.ua" className="text-2xl font-semibold text-white hover:text-blue-500">
-                Вікі
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="flex flex-col items-center justify-center">
-        <div className="text-center mt-52">
-          <h1 className="text-2xl sm:text-3xl font-bold uppercase">
-          <Image 
-            src="/logo.png" 
-            alt="LocalRP Logo" 
-            className="inline-block h-auto max-h-32 w-32 rounded-full" 
-            width={250} 
-            height={250} 
-            loading="lazy" 
-          />
-          </h1>
-          <p className="mt-4 text-gray-400 text-base sm:text-lg">
-            Платформа, де ви знайдете всю детальну інформацію про найнеобхідніше в нашій грі.
-          </p>
-        </div>
-
-        <div className="mt-8 mb-14 w-full sm:w-[80%] md:w-[60%] lg:w-[30%] h-[50px] flex items-center bg-[#12141d] rounded-md shadow-md px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-5 h-5 text-gray-500"
+      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100 text-center mb-6 sm:mb-8 tracking-tight">
+       Платформа з усією важливою інформацією про гру.
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
+        {Menu.map((item, idx) => (
+          <Link
+            key={idx}
+            href={item.link ?? "#"}
+            className="
+              relative
+              bg-white dark:bg-[#1a1c24]
+              p-4 sm:p-5 rounded-xl
+              min-h-[120px] sm:min-h-[140px]
+              flex items-start gap-4 sm:gap-5
+              border border-gray-200 dark:border-[#2a2c36]
+              pr-12 sm:pr-14
+              group
+              no-underline
+            "
+            aria-label={`Open ${item.title}`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="Пошук інформації на сайті..."
-            className="ml-3 flex-grow bg-transparent text-lg text-gray-300 placeholder-gray-500 focus:outline-none"
-          />
-        </div>
-        <div className="w-full max-w-5xl px-4">
-          <h2 className="text-2xl font-semibold text-gray-300 mb-6">Список категорій:</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Menu.map((category, index) => (
-              <div
-                key={index}
-                className="bg-[#12141d] p-6 rounded-md shadow-md hover:bg-[#1a1c24] transition-colors cursor-pointer flex items-center justify-between"
-                onClick={() => handleCategoryClick(category.link)}
+            <div className="
+              w-12 sm:w-14 h-12 sm:h-14 flex-shrink-0 rounded-lg
+              bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800
+              border border-gray-200 dark:border-[#2a2c36]
+              flex items-center justify-center text-2xl sm:text-3xl
+              shadow-sm
+            ">
+              <span aria-hidden>{renderIcon(item.icon)}</span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 dark:text-gray-100 line-clamp-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                {item.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-2 line-clamp-2">
+                {item.description}
+              </p>
+            </div>
+            <div
+              className="
+                absolute right-3 sm:right-4 top-3 sm:top-4
+                inline-flex items-center justify-center
+                rounded-full p-2 bg-gray-100 dark:bg-[#2a2c36]
+                pointer-events-none
+              "
+              aria-hidden="true"
+            >
+              <svg
+                width="25"
+                height="24"
+                viewBox="0 0 25 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100"
               >
-                <div className="flex items-center">
-                  <div className="mr-4 text-3xl">
-                    {category.icon === 'map' && <span>🗺</span>}
-                    {category.icon === 'car' && <span>🚗</span>}
-                    {category.icon === 'home' && <span>🏡</span>}
-                    {category.icon === 'business' && <span>💰</span>}
-                    {category.icon === 'box' && <span>📦</span>}
-                    {category.icon === 'book' && <span>📚</span>}
-                    {category.icon === 'briefcase' && <span>💼</span>}
-                    {category.icon === 'government' && <span>🏛</span>}
-                    {category.icon === 'crime' && <span>👹</span>}
-                    {category.icon === 'family' && <span>👪</span>}
-                    {category.icon === 'pass' && <span>🏆</span>}
-                    {category.icon === 'play' && <span>▶</span>}
-                    {category.icon === 'error' && <span>⚠</span>}
-                    {category.icon === 'roleplay' && <span>👩‍👨‍👦</span>}
-                    {category.icon === 'software' && <span>🖥</span>}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white">{category.title}</h3>
-                    <p className="text-sm text-gray-400">{category.description}</p>
-                  </div>
-                </div>
-                <div className="ml-4 text-xl text-blue-500 hover:text-blue-300">
-                  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clipPath="url(#clip0_4568_566)">
-                      <path d="M10.5 6V8H5.5V19H16.5V14H18.5V20C18.5 20.2652 18.3946 20.5196 18.2071 20.7071C18.0196 20.8946 17.7652 21 17.5 21H4.5C4.23478 21 3.98043 20.8946 3.79289 20.7071C3.60536 20.5196 3.5 20.2652 3.5 20V7C3.5 6.73478 3.60536 6.48043 3.79289 6.29289C3.98043 6.10536 4.23478 6 4.5 6H10.5ZM21.5 3V11H19.5V6.413L11.707 14.207L10.293 12.793L18.085 5H13.5V3H21.5Z" fill="white" fillOpacity="0.4"></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_4568_566">
-                        <rect width="24" height="24" fill="white" transform="translate(0.5)"></rect>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      <Footer />
+                <g clipPath="url(#clip0_4568_566)">
+                  <path
+                    d="M10.5 6V8H5.5V19H16.5V14H18.5V20C18.5 20.2652 18.3946 20.5196 18.2071 20.7071C18.0196 20.8946 17.7652 21 17.5 21H4.5C4.23478 21 3.98043 20.8946 3.79289 20.7071C3.60536 20.5196 3.5 20.2652 3.5 20V7C3.5 6.73478 3.60536 6.48043 3.79289 6.29289C3.98043 6.10536 4.23478 6 4.5 6H10.5ZM21.5 3V11H19.5V6.413L11.707 14.207L10.293 12.793L18.085 5H13.5V3H21.5Z"
+                    fill="currentColor"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_4568_566">
+                    <rect width="24" height="24" fill="white" transform="translate(0.5)" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

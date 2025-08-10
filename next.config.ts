@@ -1,17 +1,17 @@
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-  remarkPlugins: [
-    require('remark-directive'),
-    require('remark-frontmatter'),
-    require('remark-gfm'),
-    require('remark-math'),
-  ],
-  rehypePlugins: [require('rehype-raw')],
-});
+import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = withMDX({
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-});
+const nextConfig: NextConfig = {
+  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.freepik.com/**",
+      },
+    ],
+  },
+  // if used turbopack
+  // transpilePackages: ["next-mdx-remote"],
+};
 
-module.exports = nextConfig;
+export default nextConfig;

@@ -1,0 +1,338 @@
+[
+  {
+    "image": "g63amg6x6.png",
+    "title": "Hawk Sprint",
+    "price": "12 500 000",
+    "capacity": "1 200 кг",
+    "speed": "320 км/ч",
+    "type": "Lightweight"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "Titan Hauler",
+    "price": "22 000 000",
+    "capacity": "18 000 кг",
+    "speed": "210 км/ч",
+    "type": "Cargo"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "SkyRider H1",
+    "price": "35 000 000",
+    "capacity": "3 500 кг",
+    "speed": "280 км/ч",
+    "type": "Helicopters"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "WaveMaster 500",
+    "price": "27 800 000",
+    "capacity": "8 000 кг",
+    "speed": "190 км/ч",
+    "type": "Boats"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "RoadBlade 900",
+    "price": "9 200 000",
+    "capacity": "350 кг",
+    "speed": "360 км/ч",
+    "type": "Motorcycles"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "CityMover XL",
+    "price": "15 000 000",
+    "capacity": "12 000 кг",
+    "speed": "160 км/ч",
+    "type": "Buses"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "AgroMaster T5",
+    "price": "8 900 000",
+    "capacity": "14 000 кг",
+    "speed": "80 км/ч",
+    "type": "Tractors"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "Falcon GT",
+    "price": "18 500 000",
+    "capacity": "1 000 кг",
+    "speed": "330 км/ч",
+    "type": "Lightweight"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "MegaLoad C9",
+    "price": "25 600 000",
+    "capacity": "20 000 кг",
+    "speed": "200 км/ч",
+    "type": "Cargo"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "AirCruiser V2",
+    "price": "40 000 000",
+    "capacity": "4 000 кг",
+    "speed": "300 км/ч",
+    "type": "Helicopters"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "SeaKing 800",
+    "price": "29 700 000",
+    "capacity": "9 000 кг",
+    "speed": "180 км/ч",
+    "type": "Boats"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "ThunderBike 1200",
+    "price": "10 500 000",
+    "capacity": "300 кг",
+    "speed": "370 км/ч",
+    "type": "Motorcycles"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "UrbanMover XXL",
+    "price": "17 800 000",
+    "capacity": "14 000 кг",
+    "speed": "150 км/ч",
+    "type": "Buses"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "FieldKing Pro",
+    "price": "9 700 000",
+    "capacity": "15 000 кг",
+    "speed": "85 км/ч",
+    "type": "Tractors"
+  },
+    {
+    "image": "g63amg6x6.png",
+    "title": "Hawk Sprint",
+    "price": "12 500 000",
+    "capacity": "1 200 кг",
+    "speed": "320 км/ч",
+    "type": "Lightweight"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "Titan Hauler",
+    "price": "22 000 000",
+    "capacity": "18 000 кг",
+    "speed": "210 км/ч",
+    "type": "Cargo"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "SkyRider H1",
+    "price": "35 000 000",
+    "capacity": "3 500 кг",
+    "speed": "280 км/ч",
+    "type": "Helicopters"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "WaveMaster 500",
+    "price": "27 800 000",
+    "capacity": "8 000 кг",
+    "speed": "190 км/ч",
+    "type": "Boats"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "RoadBlade 900",
+    "price": "9 200 000",
+    "capacity": "350 кг",
+    "speed": "360 км/ч",
+    "type": "Motorcycles"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "CityMover XL",
+    "price": "15 000 000",
+    "capacity": "12 000 кг",
+    "speed": "160 км/ч",
+    "type": "Buses"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "AgroMaster T5",
+    "price": "8 900 000",
+    "capacity": "14 000 кг",
+    "speed": "80 км/ч",
+    "type": "Tractors"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "Falcon GT",
+    "price": "18 500 000",
+    "capacity": "1 000 кг",
+    "speed": "330 км/ч",
+    "type": "Lightweight"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "MegaLoad C9",
+    "price": "25 600 000",
+    "capacity": "20 000 кг",
+    "speed": "200 км/ч",
+    "type": "Cargo"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "AirCruiser V2",
+    "price": "40 000 000",
+    "capacity": "4 000 кг",
+    "speed": "300 км/ч",
+    "type": "Helicopters"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "SeaKing 800",
+    "price": "29 700 000",
+    "capacity": "9 000 кг",
+    "speed": "180 км/ч",
+    "type": "Boats"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "ThunderBike 1200",
+    "price": "10 500 000",
+    "capacity": "300 кг",
+    "speed": "370 км/ч",
+    "type": "Motorcycles"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "UrbanMover XXL",
+    "price": "17 800 000",
+    "capacity": "14 000 кг",
+    "speed": "150 км/ч",
+    "type": "Buses"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "FieldKing Pro",
+    "price": "9 700 000",
+    "capacity": "15 000 кг",
+    "speed": "85 км/ч",
+    "type": "Tractors"
+  },
+    {
+    "image": "g63amg6x6.png",
+    "title": "Hawk Sprint",
+    "price": "12 500 000",
+    "capacity": "1 200 кг",
+    "speed": "320 км/ч",
+    "type": "Lightweight"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "Titan Hauler",
+    "price": "22 000 000",
+    "capacity": "18 000 кг",
+    "speed": "210 км/ч",
+    "type": "Cargo"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "SkyRider H1",
+    "price": "35 000 000",
+    "capacity": "3 500 кг",
+    "speed": "280 км/ч",
+    "type": "Helicopters"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "WaveMaster 500",
+    "price": "27 800 000",
+    "capacity": "8 000 кг",
+    "speed": "190 км/ч",
+    "type": "Boats"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "RoadBlade 900",
+    "price": "9 200 000",
+    "capacity": "350 кг",
+    "speed": "360 км/ч",
+    "type": "Motorcycles"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "CityMover XL",
+    "price": "15 000 000",
+    "capacity": "12 000 кг",
+    "speed": "160 км/ч",
+    "type": "Buses"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "AgroMaster T5",
+    "price": "8 900 000",
+    "capacity": "14 000 кг",
+    "speed": "80 км/ч",
+    "type": "Tractors"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "Falcon GT",
+    "price": "18 500 000",
+    "capacity": "1 000 кг",
+    "speed": "330 км/ч",
+    "type": "Lightweight"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "MegaLoad C9",
+    "price": "25 600 000",
+    "capacity": "20 000 кг",
+    "speed": "200 км/ч",
+    "type": "Cargo"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "AirCruiser V2",
+    "price": "40 000 000",
+    "capacity": "4 000 кг",
+    "speed": "300 км/ч",
+    "type": "Helicopters"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "SeaKing 800",
+    "price": "29 700 000",
+    "capacity": "9 000 кг",
+    "speed": "180 км/ч",
+    "type": "Boats"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "ThunderBike 1200",
+    "price": "10 500 000",
+    "capacity": "300 кг",
+    "speed": "370 км/ч",
+    "type": "Motorcycles"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "UrbanMover XXL",
+    "price": "17 800 000",
+    "capacity": "14 000 кг",
+    "speed": "150 км/ч",
+    "type": "Buses"
+  },
+  {
+    "image": "g63amg6x6.png",
+    "title": "FieldKing Pro",
+    "price": "9 700 000",
+    "capacity": "15 000 кг",
+    "speed": "85 км/ч",
+    "type": "Tractors"
+  }
+]
