@@ -2,53 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
-type MenuItem = {
-  title: string;
-  description: string;
-  icon?: string;
-  link?: string;
-};
-
-const Menu: MenuItem[] = [
-  { title: "Транспорт", description: "Весь доступний транспорт на сервері", icon: "car", link: "/transport" },
-  { title: "Нерухомість", description: "Дані по всіх домах і квартирах", icon: "home", link: "/realty" },
-  { title: "Бізнеси", description: "Просунутий варіант заробітку", icon: "business", link: "/business" },
-  { title: "Предмети", description: "Доступні предмети на сервері", icon: "box", link: "/items" },
-  { title: "Основи гри", description: "Вивчення базових механік гри", icon: "book", link: "#" },
-  { title: "Роботи", description: "Деталі по доступним роботам", icon: "briefcase", link: "#" },
-  { title: "Держава", description: "Інформація про державні структури", icon: "government", link: "#" },
-  { title: "Крайм", description: "Світ злочинності та його правила", icon: "crime", link: "#" },
-  { title: "Система сім'ї", description: "Можливості створення сімей", icon: "family", link: "#" },
-  { title: "Сезонний пропуск", description: "Прогресія та нагороди", icon: "pass", link: "#" },
-  { title: "Як почати грати", description: "Поради для новачків", icon: "play", link: "/docs/ragemp/how-to-download-and-start-the-game" },
-  { title: "Помилки RageMP", description: "Як виправити помилки", icon: "error", link: "/docs/ragemp/error" },
-  { title: "Основи Roleplay", description: "Етика та рольова гра", icon: "roleplay", link: "/docs/Cob0-of-gris/basics-of-roleplay" },
-  { title: "Програмне забезпечення", description: "Рекомендації для клієнтів", icon: "software", link: "/docs/Cob0-of-gris/software-security" },
-  { title: "Блог та новини", description: "Читайте останні оновлення, поради та новини", icon: "blog", link: "/blog" },
-];
-
-function renderIcon(name?: string) {
-  switch (name) {
-    case "map": return "🗺";
-    case "car": return "🚗";
-    case "home": return "🏡";
-    case "business": return "💰";
-    case "box": return "📦";
-    case "book": return "📚";
-    case "briefcase": return "💼";
-    case "government": return "🏛";
-    case "crime": return "👹";
-    case "family": return "👪";
-    case "pass": return "🏆";
-    case "play": return "▶";
-    case "error": return "⚠";
-    case "roleplay": return "👩‍👨‍👦";
-    case "software": return "🖥";
-    case "blog": return "📰";
-    default: return "📁";
-  }
-}
+import { Menu, renderIcon, MenuItem } from "@/lib/home";
 
 export default function Home() {
   return (
@@ -64,10 +18,10 @@ export default function Home() {
         />
       </div>
       <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100 text-center mb-6 sm:mb-8 tracking-tight">
-       Платформа з усією важливою інформацією про гру.
+        Платформа з усією важливою інформацією про гру.
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
-        {Menu.map((item, idx) => (
+        {Menu.map((item: MenuItem, idx: number) => (
           <Link
             key={idx}
             href={item.link ?? "#"}

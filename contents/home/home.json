@@ -1,0 +1,17 @@
+[
+  { "title": "Транспорт", "description": "Весь доступний транспорт на сервері", "icon": "car", "link": "/transport" },
+  { "title": "Нерухомість", "description": "Дані по всіх домах і квартирах", "icon": "home", "link": "/realty" },
+  { "title": "Бізнеси", "description": "Просунутий варіант заробітку", "icon": "business", "link": "/business" },
+  { "title": "Предмети", "description": "Доступні предмети на сервері", "icon": "box", "link": "/items" },
+  { "title": "Основи гри", "description": "Вивчення базових механік гри", "icon": "book", "link": "#" },
+  { "title": "Роботи", "description": "Деталі по доступним роботам", "icon": "briefcase", "link": "#" },
+  { "title": "Держава", "description": "Інформація про державні структури", "icon": "government", "link": "#" },
+  { "title": "Крайм", "description": "Світ злочинності та його правила", "icon": "crime", "link": "#" },
+  { "title": "Система сім'ї", "description": "Можливості створення сімей", "icon": "family", "link": "#" },
+  { "title": "Сезонний пропуск", "description": "Прогресія та нагороди", "icon": "pass", "link": "#" },
+  { "title": "Як почати грати", "description": "Поради для новачків", "icon": "play", "link": "/docs/ragemp/how-to-download-and-start-the-game" },
+  { "title": "Помилки RageMP", "description": "Як виправити помилки", "icon": "error", "link": "/docs/ragemp/error" },
+  { "title": "Основи Roleplay", "description": "Етика та рольова гра", "icon": "roleplay", "link": "/docs/Cob0-of-gris/basics-of-roleplay" },
+  { "title": "Програмне забезпечення", "description": "Рекомендації для клієнтів", "icon": "software", "link": "/docs/Cob0-of-gris/software-security" },
+  { "title": "Блог та новини", "description": "Читайте останні оновлення, поради та новини", "icon": "blog", "link": "/blog" }
+]

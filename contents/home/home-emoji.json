@@ -1,0 +1,19 @@
+{
+  "map": "🗺",
+  "car": "🚗",
+  "home": "🏡",
+  "business": "💰",
+  "box": "📦",
+  "book": "📚",
+  "briefcase": "💼",
+  "government": "🏛",
+  "crime": "👹",
+  "family": "👪",
+  "pass": "🏆",
+  "play": "▶",
+  "error": "⚠",
+  "roleplay": "👩‍👨‍👦",
+  "software": "🖥",
+  "blog": "📰",
+  "default": "📁"
+}
