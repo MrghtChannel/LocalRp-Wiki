@@ -20,10 +20,45 @@ const monoFont = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LocalRP WIKI",
-  metadataBase: new URL("https://localrp.com.ua"),
+  metadataBase: new URL("https://local-rp-wiki.vercel.app"),
+  title: "LocalRP Wiki 📋 — гайди, таблиці, вікіпедія",
   description:
-    "LocalRP WIKI",
+    "LocalRP Wiki — вся інформація про LocalRP: гайди, таблиці, вікіпедія. Повна база знань для гравців LocalRP.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      uk: "/",
+      en: "/en",
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: "https://local-rp-wiki.vercel.app",
+    title: "LocalRP Wiki 📋 — гайди, таблиці, вікіпедія",
+    description:
+      "LocalRP Wiki — вся інформація про LocalRP: гайди, таблиці, вікіпедія. Повна база знань для гравців LocalRP.",
+    siteName: "LocalRP Wiki",
+    locale: "uk_UA",
+    images: [
+      {
+        url: "https://local-rp-wiki.vercel.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "LocalRP Wiki — гайди, таблиці, вікіпедія",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LocalRP Wiki 📋 — гайди, таблиці, вікіпедія",
+    description:
+      "LocalRP Wiki — вся інформація про LocalRP: гайди, таблиці, вікіпедія. Повна база знань для гравців LocalRP.",
+    images: ["https://local-rp-wiki.vercel.app/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ua" suppressHydrationWarning>
+    <html lang="uk" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
