@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Copy } from "lucide-react";
+import { Copy } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function TocActions() {
