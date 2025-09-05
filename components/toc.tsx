@@ -1,6 +1,7 @@
 import { getDocsTocs } from "@/lib/markdown";
 import TocObserver from "./toc-observer";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import TocActions from "@/components/tac-actions"; 
 
 export default async function Toc({ path }: { path: string }) {
   const tocs = await getDocsTocs(path);
@@ -11,6 +12,7 @@ export default async function Toc({ path }: { path: string }) {
         <h3 className="font-medium text-sm">На цій сторінці</h3>
         <ScrollArea className="pb-2 pt-0.5 overflow-y-auto">
           <TocObserver data={tocs} />
+            <TocActions />
         </ScrollArea>
       </div>
     </div>

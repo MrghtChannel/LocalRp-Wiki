@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/contexts/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Space_Mono, Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/footer";
+import { CopyHandler } from "@/components/copyhandler";
 import "@/styles/globals.css";
 
 const sansFont = Space_Grotesk({
@@ -21,7 +22,7 @@ const monoFont = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://local-rp-wiki.vercel.app"),
-  title: "LocalRP Wiki 📋 — гайди, таблиці, вікіпедія",
+  title: "LocalRP Wiki — гайди, таблиці, вікіпедія",
   description:
     "LocalRP Wiki — вся інформація про LocalRP: гайди, таблиці, вікіпедія. Повна база знань для гравців LocalRP.",
   robots: {
@@ -32,13 +33,12 @@ export const metadata: Metadata = {
     canonical: "/",
     languages: {
       uk: "/",
-      en: "/en",
     },
   },
   openGraph: {
     type: "website",
     url: "https://local-rp-wiki.vercel.app",
-    title: "LocalRP Wiki 📋 — гайди, таблиці, вікіпедія",
+    title: "LocalRP Wiki — гайди, таблиці, вікіпедія",
     description:
       "LocalRP Wiki — вся інформація про LocalRP: гайди, таблиці, вікіпедія. Повна база знань для гравців LocalRP.",
     siteName: "LocalRP Wiki",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LocalRP Wiki 📋 — гайди, таблиці, вікіпедія",
+    title: "LocalRP Wiki — гайди, таблиці, вікіпедія",
     description:
       "LocalRP Wiki — вся інформація про LocalRP: гайди, таблиці, вікіпедія. Повна база знань для гравців LocalRP.",
     images: ["https://local-rp-wiki.vercel.app/og-image.jpg"],
@@ -90,6 +90,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <CopyHandler />
         </ThemeProvider>
       </body>
     </html>
