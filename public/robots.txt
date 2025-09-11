@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-
-Disallow: /api/
-Disallow: /_next/
-Disallow: /server-sitemap.xml
-
-Sitemap: https://local-rp-wiki.vercel.app/sitemap.xml
