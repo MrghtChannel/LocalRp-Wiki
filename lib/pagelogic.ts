@@ -18,6 +18,11 @@ export interface Property {
   type?: string;
 }
 
+export interface PropertiesJSON {
+  imageFolder?: string;
+  items: Property[];
+}
+
 export interface FilterType {
   value: string;
   label: string;
@@ -30,10 +35,19 @@ export interface SortOptionType {
   icon: LucideIcon;
 }
 
+const parseProperties = (data: PropertiesJSON): Property[] => {
+  const folder = data.imageFolder || '';
+  const items = data.items || data;
+  return items.map(item => ({
+    ...item,
+    image: folder && item.image ? `${folder}/${item.image}` : item.image
+  }));
+};
+
 const allPageProperties: Record<string, Property[]> = {
-  business: businessProperties as Property[],
-  realty: realtyProperties as Property[],
-  transport: transportProperties as Property[],
+  business: parseProperties(businessProperties as PropertiesJSON),
+  realty: parseProperties(realtyProperties as PropertiesJSON),
+  transport: parseProperties(transportProperties as PropertiesJSON),
 };
 
 const allFilterTypes: Record<string, FilterType[]> = {
@@ -49,10 +63,10 @@ const allSortOptions: Record<string, SortOptionType[]> = {
 };
 
 export const parseNumber = (value: string | number | undefined): number => {
-  if (value === undefined || value === null) return 0
-  const strValue = typeof value === 'number' ? value.toString() : value
-  return parseFloat(strValue.replace(/[^\d]/g, '')) || 0
-}
+  if (value === undefined || value === null) return 0;
+  const strValue = typeof value === 'number' ? value.toString() : value;
+  return parseFloat(strValue.replace(/[^\d]/g, '')) || 0;
+};
 
 export const getPageProperties = async (
   page: keyof typeof allPageProperties

@@ -1,4 +1,6 @@
-[
+{
+"imageFolder": "realty",
+"items": [
   {
     "image": "1.jpg",
     "title": "Великий склад #18",
@@ -145,3 +147,4 @@
     "type": "apartment"
   }
 ]
+}

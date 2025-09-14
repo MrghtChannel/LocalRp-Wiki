@@ -46,7 +46,7 @@ export default function FullscreenImage({ imageSrc, onClose }: FullscreenImagePr
           className="absolute top-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white group transition-colors duration-200"
           onClick={onClose}
         >
-          <X size={24} className="group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+          <X size={24} className="card-title" />
         </button>
       </div>
     </div>

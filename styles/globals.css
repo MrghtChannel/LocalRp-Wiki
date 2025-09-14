@@ -217,3 +217,17 @@ pre>code {
 td>code {
   word-break: keep-all !important;
 }
+
+.card-title {
+  transition: color 0.2s;
+}
+
+/* Light theme */
+.light .card-title:hover {
+  color: #2563EB; /* blue-600 */
+}
+
+/* Dark theme */
+.dark .card-title:hover {
+  color: #60A5FA; /* blue-400 */
+}

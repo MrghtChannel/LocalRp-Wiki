@@ -49,7 +49,9 @@ function BlogCard({
       href={`/blog/${slug}`}
       className="flex flex-col gap-2 items-start border rounded-md py-5 px-3 min-h-[400px]"
     >
-      <h3 className="text-md font-semibold -mt-1 pr-7">{title}</h3>
+      <h3 className="card-title text-md font-semibold -mt-1 pr-7 transition-colors duration-200">
+        {title}
+      </h3>
       <div className="w-full">
         <Image
           src={cover}
@@ -70,6 +72,7 @@ function BlogCard({
     </Link>
   );
 }
+
 
 function AvatarGroup({ users, max = 4 }: { users: Author[]; max?: number }) {
   const displayUsers = users.slice(0, max);

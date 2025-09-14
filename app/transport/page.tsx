@@ -126,7 +126,7 @@ function PageContent() {
                 )}
                 <CardContent className="pt-4 space-y-2">
                   <h2
-                    className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 dark:text-gray-100 line-clamp-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 cursor-pointer"
+                    className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 dark:text-gray-100 line-clamp-1 card-title transition-colors duration-200 cursor-pointer"
                     onClick={() => handleCopy(item.title)}
                     title="Натисніть, щоб скопіювати"
                   >

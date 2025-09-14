@@ -1,4 +1,6 @@
-[
+{
+  "imageFolder": "business",
+  "items": [
   {
     "image": "6.jpg",
     "title": "Магазин 24/7 #4",
@@ -270,3 +272,4 @@
     "type": "carwash"
   }
 ]
+}

@@ -30,7 +30,7 @@ export default function Home() {
               </div>
               <CardContent className="flex-1 p-0 overflow-hidden">
                 <CardHeader className="p-0">
-                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 dark:text-gray-100 line-clamp-1 overflow-hidden text-ellipsis group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 dark:text-gray-100 line-clamp-1 overflow-hidden text-ellipsis card-title transition-colors duration-200">
                     {item.title}
                   </h3>
                 </CardHeader>
